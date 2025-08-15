@@ -4,9 +4,6 @@ import { Layout } from "../components/Layout"
 import { useAuth } from "../context/UserContext"
 import { useNavigate } from "react-router-dom"
 
-import React from "react";
-
-
 export default Login; // ✅ export default
 
 const Login = () => {
