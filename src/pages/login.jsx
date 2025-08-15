@@ -1,13 +1,21 @@
 import { Layout } from "../components/Layout"
-
+import { useAuth } from "../context/UserContext"
 const Login = () => {
+
+  const { login } = useAuth()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    login()
+  }
+
   return (
     <Layout>
       <h1>Inicia sesión</h1>
 
       <section>
         <h2>Hola, bienvenido de nuevo</h2>
-        <form>
+        <form onSubmit={handleLogin}>
           <div>
             <label>Correo electrónico:</label>
             <input type="email" />

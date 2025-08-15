@@ -1,9 +1,8 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
-
+import { useAuth } from "../context/UserContext"
 const Header = () => {
-  const [user, setUser] = useState(true)
 
+  const { user } = useAuth()
   return (
     <header style={{ backgroundColor: "lightblue" }}>
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png" alt="imagen de logo" />
