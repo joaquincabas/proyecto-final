@@ -2,7 +2,7 @@ import { Layout } from "../components/Layout"
 
 const Login = () => {
   return (
-    <Layout background="red">
+    <Layout>
       <h1>Hola desde login</h1>
     </Layout>
   )
