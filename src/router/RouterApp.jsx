@@ -1,16 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from "../pages/home"
-import { Dashboard } from "../pages/dashboard"
+import { Dashboard } from "../pages/Dashboard"
 import { Login } from "../pages/Login"
-import { Register } from "../pages/register"
+
+import { Register } from "../pages/Register"
 import { NotFound } from "../pages/notfound"
+import { PrivateRoute } from "../components/PrivateRoute"
 
 const RouterApp = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/registrate" element={<Register />} />
         <Route path="*" element={<NotFound />} />
