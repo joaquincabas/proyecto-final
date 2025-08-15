@@ -9,7 +9,6 @@ const Home = () => {
   const fetchingProducts = async () => {
     const response = await fetch("https://fakestoreapi.com/products", { method: "GET" })
     const data = await response.json()
-
     setProducts(data)
   }
 
@@ -28,7 +27,6 @@ const Home = () => {
   }
 
   // petición al backend mediante fetch para modificar-> método PATCH / PUT https://fakeproductapi.com/products
-
   const handleUpdate = async () => { }
 
   return (
