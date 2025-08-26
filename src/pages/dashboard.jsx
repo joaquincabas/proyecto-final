@@ -108,4 +108,4 @@ const Dashboard = () => {
 };
 
 // Export nombrado
-export { Dashboard };
+export default Dashboard;
