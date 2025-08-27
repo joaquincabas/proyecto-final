@@ -4,6 +4,8 @@ import { RouterApp } from './router/RouterApp'
 import "./styles/components/styles.css"
 import "./index.css"
 import { UserProvider } from './context/UserContext'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
