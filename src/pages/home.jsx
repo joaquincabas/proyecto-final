@@ -1,45 +1,45 @@
-import { useEffect, useState } from "react";
-import { Layout } from "../components/Layout";
-import { useAuth } from "../context/UserContext";
+import { useEffect, useState } from "react"
+import { Layout } from "../components/Layout"
+import { useAuth } from "../context/UserContext"
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState(""); // Estado para la búsqueda
+  const [products, setProducts] = useState([])
+  const [search, setSearch] = useState("") // Estado para la búsqueda
 
-  const [showPopup, setShowPopup] = useState(null);
+  const [showPopup, setShowPopup] = useState(null)
   const [productToEdit, setProductToEdit] = useState(null);
-  const [titleEdit, setTitleEdit] = useState("");
-  const [priceEdit, setPriceEdit] = useState("");
-  const [descriptionEdit, setDescriptionEdit] = useState("");
-  const [categoryEdit, setCategoryEdit] = useState("");
-  const [imageEdit, setImageEdit] = useState("");
-  const { user } = useAuth();
+  const [titleEdit, setTitleEdit] = useState("")
+  const [priceEdit, setPriceEdit] = useState("")
+  const [descriptionEdit, setDescriptionEdit] = useState("")
+  const [categoryEdit, setCategoryEdit] = useState("")
+  const [imageEdit, setImageEdit] = useState("")
+  const { user } = useAuth()
 
   const fetchingProducts = async () => {
-    const response = await fetch("https://fakestoreapi.com/products", { method: "GET" });
-    const data = await response.json();
+    const response = await fetch("https://fakestoreapi.com/products", { method: "GET" })
+    const data = await response.json()
     setProducts(data);
   };
 
   useEffect(() => {
-    fetchingProducts();
-  }, []);
+    fetchingProducts()
+  }, [])
 
   const handleDelete = async (id) => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, { method: "DELETE" });
     if (response.ok) {
-      setProducts(prevProduct => prevProduct.filter((product) => product.id !== id));
+      setProducts(prevProduct => prevProduct.filter((product) => product.id !== id))
     }
   };
 
   const handleOpenEdit = (product) => {
-    setShowPopup(true);
-    setProductToEdit(product);
-    setTitleEdit(product.title);
-    setPriceEdit(product.price);
-    setDescriptionEdit(product.description);
-    setCategoryEdit(product.category);
-    setImageEdit(product.image);
+    setShowPopup(true)
+    setProductToEdit(product)
+    setTitleEdit(product.title)
+    setPriceEdit(product.price)
+    setDescriptionEdit(product.description)
+    setCategoryEdit(product.category)
+    setImageEdit(product.image)
   };
 
   const handleUpdate = async (e) => {
@@ -61,10 +61,10 @@ const Home = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedProduct),
-      });
+      })
 
       if (response.ok) {
-        const data = await response.json();
+        const data = await response.json()
         setProducts(prevProduct =>
           prevProduct.map((product) =>
             product.id === productToEdit.id
@@ -73,9 +73,9 @@ const Home = () => {
           )
         );
       }
-      setShowPopup(false);
+      setShowPopup(false)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   };
 
@@ -181,7 +181,7 @@ const Home = () => {
         </section>
       )}
     </Layout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

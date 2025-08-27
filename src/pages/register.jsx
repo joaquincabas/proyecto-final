@@ -14,10 +14,24 @@ const Register = () => {
     setSuccess("")
 
     if (!username || !email || !password) {
-      setError("Debes completar todos los campos")
+      setError("Todos los campos son obligatorios.")
       return
     }
 
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      setError("El correo electrónico no tiene un formato válido.")
+      return
+    }
+
+    // Validar longitud de la contraseña
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.")
+      return
+    }
+
+    // Si todo está bien
     const newUser = {
       username,
       email,
@@ -25,8 +39,7 @@ const Register = () => {
     }
 
     console.log(newUser)
-    setSuccess("Usuario registrado con éxito")
-
+    setSuccess("Usuario registrado con éxito.")
     setUsername("")
     setEmail("")
     setPassword("")
